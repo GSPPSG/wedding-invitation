@@ -433,34 +433,36 @@
     const successMessage = document.getElementById('successMessage');
     const errorMessage = document.getElementById('errorMessage');
 
-    form.addEventListener('submit', async function (event) {
-      event.preventDefault();
+   form.addEventListener('submit', async function (event) {
+  event.preventDefault();
 
-      successMessage.style.display = 'none';
-      errorMessage.style.display = 'none';
+  successMessage.style.display = 'none';
+  errorMessage.style.display = 'none';
 
-      const submitButton = form.querySelector('button[type="submit"]');
-      submitButton.disabled = true;
-      submitButton.textContent = 'Submitting...';
+  const submitButton = form.querySelector('button[type="submit"]');
 
-      const formData = new FormData(form);
+  submitButton.disabled = true;
+  submitButton.textContent = 'Submitting...';
 
-try {
-  await fetch(SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    body: new URLSearchParams(formData)
-  });
+  try {
+    const formData = new FormData(form);
 
-  form.reset();
-  successMessage.style.display = 'block';
-      } catch (error) {
-        errorMessage.style.display = 'block';
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = 'Submit RSVP';
-      }
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: formData
     });
+
+    form.reset();
+    successMessage.style.display = 'block';
+
+  } catch (error) {
+    console.error(error);
+    errorMessage.style.display = 'block';
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = 'Submit RSVP';
+  }
+});
   </script>
 </body>
 </html>
