@@ -440,28 +440,43 @@ form.addEventListener('submit', function(event) {
   errorMessage.style.display = 'none';
 
   const submitButton = form.querySelector('button[type="submit"]');
-
   submitButton.disabled = true;
   submitButton.textContent = 'Submitting...';
 
+  const hiddenForm = document.createElement('form');
+  hiddenForm.method = 'POST';
+  hiddenForm.action = SCRIPT_URL;
+  hiddenForm.target = 'hidden_iframe';
+  hiddenForm.style.display = 'none';
+
   const formData = new FormData(form);
 
-  fetch(SCRIPT_URL, {
-    method: 'POST',
-    body: formData
-  })
-  .then(() => {
+  for (const [key, value] of formData.entries()) {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = key;
+    input.value = value;
+    hiddenForm.appendChild(input);
+  }
+
+  const iframe = document.createElement('iframe');
+  iframe.name = 'hidden_iframe';
+  iframe.style.display = 'none';
+
+  document.body.appendChild(iframe);
+  document.body.appendChild(hiddenForm);
+
+  hiddenForm.submit();
+
+  setTimeout(() => {
     form.reset();
     successMessage.style.display = 'block';
-  })
-  .catch((error) => {
-    console.error(error);
-    errorMessage.style.display = 'block';
-  })
-  .finally(() => {
     submitButton.disabled = false;
     submitButton.textContent = 'Submit RSVP';
-  });
+
+    document.body.removeChild(hiddenForm);
+    document.body.removeChild(iframe);
+  }, 1500);
 });
 </script>
 </body>
