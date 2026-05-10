@@ -426,14 +426,14 @@
     With love, Grigoris & Emily · 25 September 2026
   </footer>
 
-  <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzKd9eI_ZkHMbu6jsK4OgCc4HlTesrbZbpX9RniAiXKW0pm-1s2sTvFpKXUWgLxmQEWjQ/exec';
+<script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzKd9eI_ZkHMbu6jsK4OgCc4HlTesrbZbpX9RniAiXKW0pm-1s2sTvFpKXUWgLxmQEWjQ/exec';
 
-    const form = document.getElementById('rsvpForm');
-    const successMessage = document.getElementById('successMessage');
-    const errorMessage = document.getElementById('errorMessage');
+const form = document.getElementById('rsvpForm');
+const successMessage = document.getElementById('successMessage');
+const errorMessage = document.getElementById('errorMessage');
 
-   form.addEventListener('submit', async function (event) {
+form.addEventListener('submit', function(event) {
   event.preventDefault();
 
   successMessage.style.display = 'none';
@@ -444,25 +444,25 @@
   submitButton.disabled = true;
   submitButton.textContent = 'Submitting...';
 
-  try {
-    const formData = new FormData(form);
+  const formData = new FormData(form);
 
-    await fetch(SCRIPT_URL, {
-      method: 'POST',
-      body: formData
-    });
-
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    body: formData
+  })
+  .then(() => {
     form.reset();
     successMessage.style.display = 'block';
-
-  } catch (error) {
+  })
+  .catch((error) => {
     console.error(error);
     errorMessage.style.display = 'block';
-  } finally {
+  })
+  .finally(() => {
     submitButton.disabled = false;
     submitButton.textContent = 'Submit RSVP';
-  }
+  });
 });
-  </script>
+</script>
 </body>
 </html>
