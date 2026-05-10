@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grigoris & Emily | Wedding Invitation</title>
+  <style>
+    :root {
+      --bg: #faf7f2;
+      --card: #fffdf9;
+      --ink: #2d2926;
+      --muted: #756f68;
+      --gold: #b89b5e;
+      --gold-dark: #8a6f35;
+      --line: rgba(184, 155, 94, 0.28);
+      --shadow: 0 22px 70px rgba(45, 41, 38, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      background:
+        radial-gradient(circle at top left, rgba(184, 155, 94, 0.13), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(184, 155, 94, 0.10), transparent 35%),
+        var(--bg);
+      color: var(--ink);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      white-space: nowrap;
+    }
+
+    .links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .links a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 15px;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 3px;
+    }
+
+    .links a:hover { border-color: var(--gold); }
+
+    .hero {
+      min-height: 90vh;
+      display: grid;
+      place-items: center;
+      padding: 70px 20px;
+    }
+
+    .invite-card {
+      width: min(920px, 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,253,249,0.96));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: 30px;
+      padding: clamp(36px, 7vw, 86px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .invite-card::before,
+    .invite-card::after {
+      content: '';
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      opacity: 0.7;
+    }
+
+    .invite-card::before { top: -80px; left: -70px; }
+    .invite-card::after { bottom: -80px; right: -70px; }
+
+    .eyebrow {
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 13px;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 9vw, 100px);
+      line-height: 0.95;
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .ampersand {
+      display: block;
+      color: var(--gold);
+      font-size: 0.62em;
+      margin: 8px 0;
+    }
+
+    .date {
+      margin: 34px 0 12px;
+      font-size: clamp(20px, 4vw, 32px);
+      letter-spacing: 0.12em;
+      color: var(--gold-dark);
+    }
+
+    .subtitle {
+      max-width: 680px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .button-row {
+      margin-top: 36px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      color: var(--ink);
+      background: transparent;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 16px;
+    }
+
+    .btn.primary {
+      background: var(--gold);
+      color: white;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 70px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(34px, 5vw, 56px);
+      font-weight: 400;
+      margin: 0 0 22px;
+    }
+
+    .section-text {
+      max-width: 760px;
+      margin: 0 auto 32px;
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .detail-card, .form-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 12px 34px rgba(45, 41, 38, 0.06);
+    }
+
+    .detail-card h3 {
+      margin: 0 0 10px;
+      color: var(--gold-dark);
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .detail-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .form-card {
+      max-width: 720px;
+      margin: 34px auto 0;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      color: var(--ink);
+      font-size: 15px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    textarea { min-height: 110px; resize: vertical; }
+
+    .two-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .success, .error {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      line-height: 1.5;
+    }
+
+    .success {
+      background: rgba(46, 125, 50, 0.09);
+      border: 1px solid rgba(46, 125, 50, 0.25);
+      color: #2e7d32;
+    }
+
+    .error {
+      background: rgba(183, 28, 28, 0.08);
+      border: 1px solid rgba(183, 28, 28, 0.22);
+      color: #9f1d1d;
+    }
+
+    footer {
+      text-align: center;
+      padding: 42px 20px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 760px) {
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .links {
+        justify-content: flex-start;
+        gap: 12px;
+      }
+
+      .details-grid,
+      .two-cols {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 38px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div class="brand">G & E</div>
+      <div class="links">
+        <a href="#home">Invitation</a>
+        <a href="#details">Details</a>
+        <a href="#rsvp">RSVP</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="invite-card">
+        <div class="eyebrow">Together with their families</div>
+        <h1>
+          Grigoris
+          <span class="ampersand">&</span>
+          Emily
+        </h1>
+        <div class="date">25 · 09 · 2026</div>
+        <p class="subtitle">
+          We joyfully invite you to celebrate our wedding day with us at Ktima Ivelia.
+        </p>
+        <div class="button-row">
+          <a class="btn primary" href="#rsvp">RSVP</a>
+          <a class="btn" href="#details">View Details</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="details">
+      <h2 class="section-title">Wedding Details</h2>
+      <p class="section-text">
+        Our ceremony and reception will both take place at Ktima Ivelia in Koropi.
+        More details will be shared closer to the day.
+      </p>
+
+      <div class="details-grid">
+        <div class="detail-card">
+          <h3>Date</h3>
+          <p>Friday, 25 September 2026</p>
+        </div>
+        <div class="detail-card">
+          <h3>Venue</h3>
+          <p>Ktima Ivelia<br />Οδός Λαμπτρών, Koropi 19400</p>
+        </div>
+        <div class="detail-card">
+          <h3>Location</h3>
+          <p><a href="https://ktima-ivelia.gr/" target="_blank" rel="noopener">Visit venue website</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp">
+      <h2 class="section-title">RSVP</h2>
+      <p class="section-text">
+        Please let us know whether you will be joining us.
+      </p>
+
+      <div class="form-card">
+        <form id="rsvpForm">
+          <label>
+            Full Name
+            <input type="text" name="fullName" required placeholder="Your full name" />
+          </label>
+
+          <div class="two-cols">
+            <label>
+              Will you attend?
+              <select name="attending" required>
+                <option value="">Please select</option>
+                <option value="Yes">Yes, I will attend</option>
+                <option value="No">Sorry, I cannot attend</option>
+              </select>
+            </label>
+
+            <label>
+              Number of Guests
+              <input type="number" name="guests" min="1" max="10" placeholder="1" />
+            </label>
+          </div>
+
+          <label>
+            Meal Preference
+            <select name="meal">
+              <option value="">No preference / Not sure yet</option>
+              <option value="Standard">Standard</option>
+              <option value="Vegetarian">Vegetarian</option>
+              <option value="Vegan">Vegan</option>
+              <option value="Other">Other / Allergy</option>
+            </select>
+          </label>
+
+          <label>
+            Song Request
+            <input type="text" name="song" placeholder="A song you would love to hear" />
+          </label>
+
+          <label>
+            Message / Allergies / Notes
+            <textarea name="message" placeholder="Write anything we should know"></textarea>
+          </label>
+
+          <button class="btn primary" type="submit">Submit RSVP</button>
+        </form>
+
+        <div id="successMessage" class="success">
+          Thank you! Your RSVP has been submitted successfully.
+        </div>
+        <div id="errorMessage" class="error">
+          Something went wrong. Please try again or contact us directly.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    With love, Grigoris & Emily · 25 September 2026
+  </footer>
+
+  <script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzKd9eI_ZkHMbu6jsK4OgCc4HlTesrbZbpX9RniAiXKW0pm-1s2sTvFpKXUWgLxmQEWjQ/exec';
+
+    const form = document.getElementById('rsvpForm');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      successMessage.style.display = 'none';
+      errorMessage.style.display = 'none';
+
+      const submitButton = form.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      submitButton.textContent = 'Submitting...';
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        form.reset();
+        successMessage.style.display = 'block';
+      } catch (error) {
+        errorMessage.style.display = 'block';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit RSVP';
+      }
+    });
+  </script>
+</body>
+</html>
