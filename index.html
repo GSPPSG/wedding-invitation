@@ -444,19 +444,16 @@
       submitButton.textContent = 'Submitting...';
 
       const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
 
-      try {
-        const response = await fetch(SCRIPT_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        });
+try {
+  await fetch(SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: new URLSearchParams(formData)
+  });
 
-        form.reset();
-        successMessage.style.display = 'block';
+  form.reset();
+  successMessage.style.display = 'block';
       } catch (error) {
         errorMessage.style.display = 'block';
       } finally {
