@@ -6,26 +6,28 @@
   <title>Grigoris & Emily | Wedding Invitation</title>
   <style>
     :root {
-      --bg: #faf7f2;
-      --card: #fffdf9;
-      --ink: #2d2926;
-      --muted: #756f68;
+      --bg: #f8f4ed;
+      --card: #fffdf8;
+      --ink: #2f2a25;
+      --muted: #756d63;
       --gold: #b89b5e;
-      --gold-dark: #8a6f35;
-      --line: rgba(184, 155, 94, 0.28);
-      --shadow: 0 22px 70px rgba(45, 41, 38, 0.12);
+      --gold-dark: #806530;
+      --olive: #6f7458;
+      --blush: #eadbd1;
+      --line: rgba(184, 155, 94, 0.3);
+      --shadow: 0 24px 80px rgba(47, 42, 37, 0.12);
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       font-family: Georgia, 'Times New Roman', serif;
       background:
-        radial-gradient(circle at top left, rgba(184, 155, 94, 0.13), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(184, 155, 94, 0.10), transparent 35%),
+        radial-gradient(circle at 15% 10%, rgba(184, 155, 94, 0.16), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(234, 219, 209, 0.55), transparent 28%),
+        radial-gradient(circle at 80% 90%, rgba(111, 116, 88, 0.12), transparent 30%),
         var(--bg);
       color: var(--ink);
     }
@@ -34,24 +36,24 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(250, 247, 242, 0.92);
-      backdrop-filter: blur(12px);
+      background: rgba(248, 244, 237, 0.92);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
     }
 
     .nav-inner {
-      max-width: 1100px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 16px 22px;
+      padding: 15px 22px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
     }
 
     .brand {
       font-size: 18px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--gold-dark);
       white-space: nowrap;
@@ -59,35 +61,40 @@
 
     .links {
       display: flex;
-      gap: 18px;
+      gap: 16px;
       flex-wrap: wrap;
       justify-content: flex-end;
+      align-items: center;
     }
 
-    .links a {
+    .links a, .lang-btn {
       color: var(--ink);
       text-decoration: none;
-      font-size: 15px;
+      font-size: 14px;
+      border: 0;
+      background: transparent;
+      font-family: inherit;
+      cursor: pointer;
+      padding: 5px 0;
       border-bottom: 1px solid transparent;
-      padding-bottom: 3px;
     }
 
-    .links a:hover { border-color: var(--gold); }
+    .links a:hover, .lang-btn:hover { border-color: var(--gold); }
 
     .hero {
-      min-height: 90vh;
+      min-height: 92vh;
       display: grid;
       place-items: center;
       padding: 70px 20px;
     }
 
     .invite-card {
-      width: min(920px, 100%);
-      background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,253,249,0.96));
+      width: min(960px, 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,253,248,0.98));
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
-      border-radius: 30px;
-      padding: clamp(36px, 7vw, 86px);
+      border-radius: 34px;
+      padding: clamp(38px, 7vw, 90px);
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -97,26 +104,26 @@
     .invite-card::after {
       content: '';
       position: absolute;
-      width: 180px;
-      height: 180px;
+      width: 220px;
+      height: 220px;
       border: 1px solid var(--line);
       border-radius: 50%;
       opacity: 0.7;
     }
 
-    .invite-card::before { top: -80px; left: -70px; }
-    .invite-card::after { bottom: -80px; right: -70px; }
+    .invite-card::before { top: -100px; left: -95px; }
+    .invite-card::after { bottom: -100px; right: -95px; }
 
     .eyebrow {
       color: var(--gold-dark);
       text-transform: uppercase;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.24em;
       font-size: 13px;
       margin-bottom: 28px;
     }
 
     h1 {
-      font-size: clamp(48px, 9vw, 100px);
+      font-size: clamp(52px, 9vw, 104px);
       line-height: 0.95;
       margin: 0;
       font-weight: 400;
@@ -132,16 +139,16 @@
     .date {
       margin: 34px 0 12px;
       font-size: clamp(20px, 4vw, 32px);
-      letter-spacing: 0.12em;
+      letter-spacing: 0.13em;
       color: var(--gold-dark);
     }
 
     .subtitle {
-      max-width: 680px;
+      max-width: 720px;
       margin: 18px auto 0;
       color: var(--muted);
       font-size: 18px;
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
     .button-row {
@@ -154,7 +161,7 @@
 
     .btn {
       display: inline-block;
-      padding: 14px 24px;
+      padding: 14px 25px;
       border-radius: 999px;
       text-decoration: none;
       border: 1px solid var(--gold);
@@ -171,57 +178,138 @@
     }
 
     section {
-      max-width: 1100px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 70px 20px;
+      padding: 72px 20px;
     }
 
     .section-title {
       text-align: center;
-      font-size: clamp(34px, 5vw, 56px);
+      font-size: clamp(34px, 5vw, 58px);
       font-weight: 400;
-      margin: 0 0 22px;
+      margin: 0 0 18px;
     }
 
     .section-text {
-      max-width: 760px;
-      margin: 0 auto 32px;
+      max-width: 780px;
+      margin: 0 auto 34px;
       text-align: center;
       color: var(--muted);
-      line-height: 1.8;
+      line-height: 1.85;
       font-size: 18px;
     }
 
-    .details-grid {
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      max-width: 760px;
+      margin: 34px auto 0;
+    }
+
+    .count-box {
+      background: rgba(255, 253, 248, 0.86);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px 12px;
+      text-align: center;
+      box-shadow: 0 12px 34px rgba(47, 42, 37, 0.06);
+    }
+
+    .count-box strong {
+      display: block;
+      color: var(--gold-dark);
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .count-box span {
+      color: var(--muted);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .story-grid, .details-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
       margin-top: 34px;
     }
 
-    .detail-card, .form-card {
+    .story-card, .detail-card, .form-card, .map-card {
       background: var(--card);
       border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 26px;
-      box-shadow: 0 12px 34px rgba(45, 41, 38, 0.06);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: 0 12px 34px rgba(47, 42, 37, 0.06);
     }
 
-    .detail-card h3 {
+    .story-card h3, .detail-card h3 {
       margin: 0 0 10px;
       color: var(--gold-dark);
       font-size: 22px;
       font-weight: 400;
     }
 
-    .detail-card p {
+    .story-card p, .detail-card p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
-    .form-card {
-      max-width: 720px;
+    .carousel {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: 44px 1fr 44px;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .carousel-frame {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      overflow: hidden;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      min-height: 420px;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .carousel-frame img {
+      width: 100%;
+      height: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      display: none;
+    }
+
+    .carousel-frame img.active { display: block; }
+
+    .photo-placeholder {
+      padding: 60px 24px;
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .carousel-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      background: rgba(255, 253, 248, 0.9);
+      color: var(--gold-dark);
+      cursor: pointer;
+      font-size: 24px;
+      font-family: inherit;
+    }
+
+    .form-card, .map-card {
+      max-width: 780px;
       margin: 34px auto 0;
     }
 
@@ -275,12 +363,25 @@
       color: #9f1d1d;
     }
 
+    .map-card iframe {
+      width: 100%;
+      min-height: 420px;
+      border: 0;
+      border-radius: 22px;
+    }
+
     footer {
       text-align: center;
       padding: 42px 20px;
       color: var(--muted);
       border-top: 1px solid var(--line);
     }
+
+    [data-el] { display: none; }
+    body.lang-el [data-el] { display: initial; }
+    body.lang-el [data-en] { display: none; }
+    body.lang-en [data-en] { display: initial; }
+    body.lang-en [data-el] { display: none; }
 
     @media (max-width: 760px) {
       .nav-inner {
@@ -293,25 +394,29 @@
         gap: 12px;
       }
 
-      .details-grid,
-      .two-cols {
+      .story-grid, .details-grid, .two-cols, .countdown {
         grid-template-columns: 1fr;
       }
 
-      .hero {
-        padding-top: 38px;
-      }
+      .hero { padding-top: 40px; }
+      .carousel { grid-template-columns: 1fr; }
+      .carousel-btn { margin: 0 auto; }
+      .carousel-frame { min-height: 260px; }
     }
   </style>
 </head>
-<body>
+<body class="lang-en">
   <nav>
     <div class="nav-inner">
       <div class="brand">G & E</div>
       <div class="links">
-        <a href="#home">Invitation</a>
-        <a href="#details">Details</a>
+        <a href="#home" data-en>Invitation</a><a href="#home" data-el>Πρόσκληση</a>
+        <a href="#story" data-en>Our Story</a><a href="#story" data-el>Η Ιστορία μας</a>
+        <a href="#photos" data-en>Photos</a><a href="#photos" data-el>Φωτογραφίες</a>
+        <a href="#details" data-en>Details</a><a href="#details" data-el>Πληροφορίες</a>
         <a href="#rsvp">RSVP</a>
+        <button class="lang-btn" type="button" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" type="button" onclick="setLanguage('el')">GR</button>
       </div>
     </div>
   </nav>
@@ -319,105 +424,150 @@
   <main>
     <section id="home" class="hero">
       <div class="invite-card">
-        <div class="eyebrow">Together with their families</div>
+        <div class="eyebrow" data-en>Together with their families</div>
+        <div class="eyebrow" data-el>Μαζί με τις οικογένειές τους</div>
         <h1>
           Grigoris
           <span class="ampersand">&</span>
           Emily
         </h1>
         <div class="date">25 · 09 · 2026</div>
-        <p class="subtitle">
-          We joyfully invite you to celebrate our wedding day with us at Ktima Ivelia.
+        <p class="subtitle" data-en>
+          We joyfully invite you to celebrate a day of love, laughter and new beginnings with us at Ktima Ivelia.
+        </p>
+        <p class="subtitle" data-el>
+          Με πολλή χαρά σας προσκαλούμε να γιορτάσετε μαζί μας μια ημέρα γεμάτη αγάπη, χαμόγελα και όμορφες στιγμές στο Κτήμα Ιβέλια.
         </p>
         <div class="button-row">
           <a class="btn primary" href="#rsvp">RSVP</a>
-          <a class="btn" href="#details">View Details</a>
+          <a class="btn" href="#details" data-en>View Details</a>
+          <a class="btn" href="#details" data-el>Πληροφορίες</a>
         </div>
       </div>
     </section>
 
-    <section id="details">
-      <h2 class="section-title">Wedding Details</h2>
-      <p class="section-text">
-        Our ceremony and reception will both take place at Ktima Ivelia in Koropi.
-        More details will be shared closer to the day.
-      </p>
+    <section id="countdown-section">
+      <h2 class="section-title" data-en>Counting down to forever</h2>
+      <h2 class="section-title" data-el>Μετράμε αντίστροφα</h2>
+      <p class="section-text" data-en>Every day brings us closer to celebrating with the people we love most.</p>
+      <p class="section-text" data-el>Κάθε μέρα μας φέρνει πιο κοντά στη στιγμή που θα γιορτάσουμε με τους ανθρώπους που αγαπάμε.</p>
+      <div class="countdown">
+        <div class="count-box"><strong id="days">0</strong><span data-en>Days</span><span data-el>Ημέρες</span></div>
+        <div class="count-box"><strong id="hours">0</strong><span data-en>Hours</span><span data-el>Ώρες</span></div>
+        <div class="count-box"><strong id="minutes">0</strong><span data-en>Minutes</span><span data-el>Λεπτά</span></div>
+        <div class="count-box"><strong id="seconds">0</strong><span data-en>Seconds</span><span data-el>Δευτ.</span></div>
+      </div>
+    </section>
 
+    <section id="story">
+      <h2 class="section-title" data-en>Our Story</h2>
+      <h2 class="section-title" data-el>Η Ιστορία μας</h2>
+      <p class="section-text" data-en>
+        Elegant, warm and a little playful — this space was designed to feel like you: romantic without being too formal, refined without feeling distant, and full of the joy of the people who will celebrate with you.
+      </p>
+      <p class="section-text" data-el>
+        Κομψό, ζεστό και με λίγη παιχνιδιάρικη διάθεση — ένας χώρος που δημιουργήθηκε για να σας ταιριάζει: ρομαντικός χωρίς υπερβολές, elegant χωρίς απόσταση, και γεμάτος χαρά.
+      </p>
+      <div class="story-grid">
+        <div class="story-card">
+          <h3 data-en>The Feeling</h3><h3 data-el>Η Αίσθηση</h3>
+          <p data-en>Soft neutrals, warm gold and olive details create a timeless Greek elegance.</p>
+          <p data-el>Απαλοί ουδέτεροι τόνοι, ζεστό χρυσό και olive λεπτομέρειες δημιουργούν μια διαχρονική ελληνική κομψότητα.</p>
+        </div>
+        <div class="story-card">
+          <h3 data-en>The Celebration</h3><h3 data-el>Η Γιορτή</h3>
+          <p data-en>A day designed for family, friends, music, good wine and unforgettable moments.</p>
+          <p data-el>Μια ημέρα για οικογένεια, φίλους, μουσική, καλό κρασί και αξέχαστες στιγμές.</p>
+        </div>
+        <div class="story-card">
+          <h3 data-en>The Place</h3><h3 data-el>Το Μέρος</h3>
+          <p data-en>Ktima Ivelia brings the ceremony and reception together in one beautiful setting.</p>
+          <p data-el>Το Κτήμα Ιβέλια φιλοξενεί τόσο την τελετή όσο και τη δεξίωση σε έναν όμορφο χώρο.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="photos">
+      <h2 class="section-title" data-en>Photos</h2>
+      <h2 class="section-title" data-el>Φωτογραφίες</h2>
+      <p class="section-text" data-en>Add your favourite couple photos here. The carousel is ready — you only need to upload images and replace the file names in the code.</p>
+      <p class="section-text" data-el>Προσθέστε εδώ τις αγαπημένες σας φωτογραφίες. Το carousel είναι έτοιμο — χρειάζεται μόνο να ανεβάσετε εικόνες και να αντικαταστήσετε τα ονόματα των αρχείων στον κώδικα.</p>
+      <div class="carousel">
+        <button class="carousel-btn" type="button" onclick="changePhoto(-1)">‹</button>
+        <div class="carousel-frame">
+          <div class="photo-placeholder" id="photoPlaceholder">
+            <strong data-en>Photo carousel placeholder</strong><strong data-el>Χώρος για φωτογραφίες</strong><br />
+            <span data-en>Upload photos named photo1.jpg, photo2.jpg and photo3.jpg to GitHub, then uncomment the image lines in the code.</span>
+            <span data-el>Ανεβάστε φωτογραφίες με ονόματα photo1.jpg, photo2.jpg και photo3.jpg στο GitHub και ενεργοποιήστε τις γραμμές εικόνων στον κώδικα.</span>
+          </div>
+          <!-- After uploading photos to GitHub, remove this comment marker and use these lines:
+          <img src="photo1.jpg" alt="Grigoris and Emily photo 1" class="active" />
+          <img src="photo2.jpg" alt="Grigoris and Emily photo 2" />
+          <img src="photo3.jpg" alt="Grigoris and Emily photo 3" />
+          -->
+        </div>
+        <button class="carousel-btn" type="button" onclick="changePhoto(1)">›</button>
+      </div>
+    </section>
+
+    <section id="details">
+      <h2 class="section-title" data-en>Wedding Details</h2>
+      <h2 class="section-title" data-el>Πληροφορίες Γάμου</h2>
+      <p class="section-text" data-en>Our ceremony and reception will both take place at Ktima Ivelia in Koropi.</p>
+      <p class="section-text" data-el>Η τελετή και η δεξίωση θα πραγματοποιηθούν στο Κτήμα Ιβέλια στο Κορωπί.</p>
       <div class="details-grid">
         <div class="detail-card">
-          <h3>Date</h3>
-          <p>Friday, 25 September 2026</p>
+          <h3 data-en>Date</h3><h3 data-el>Ημερομηνία</h3>
+          <p data-en>Friday, 25 September 2026</p>
+          <p data-el>Παρασκευή, 25 Σεπτεμβρίου 2026</p>
         </div>
         <div class="detail-card">
-          <h3>Venue</h3>
+          <h3 data-en>Venue</h3><h3 data-el>Τοποθεσία</h3>
           <p>Ktima Ivelia<br />Οδός Λαμπτρών, Koropi 19400</p>
         </div>
         <div class="detail-card">
-          <h3>Location</h3>
-          <p><a href="https://ktima-ivelia.gr/" target="_blank" rel="noopener">Visit venue website</a></p>
+          <h3 data-en>Useful Link</h3><h3 data-el>Χρήσιμος Σύνδεσμος</h3>
+          <p><a href="https://maps.app.goo.gl/VJcVJPsjLfbhZYdEA" target="_blank" rel="noopener" data-en>Open in Google Maps</a><a href="https://maps.app.goo.gl/VJcVJPsjLfbhZYdEA" target="_blank" rel="noopener" data-el>Άνοιγμα στο Google Maps</a></p>
         </div>
+      </div>
+      <div class="map-card">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3150.3095877734027!2d23.810958070603192!3d37.85304597196565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a195c85702110d%3A0xc680882761eb29bb!2zzprPhM6uzrzOsSDOmc6yzq3Ou865zrEgzprPhM6uzrzOsSDPg8-Ezr8gzprOv8-B4nPgM6v!5e0!3m2!1sel!2sgr!4v1778523492632!5m2!1sel!2sgr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </section>
 
     <section id="rsvp">
       <h2 class="section-title">RSVP</h2>
-      <p class="section-text">
-        Please let us know whether you will be joining us.
-      </p>
-
+      <p class="section-text" data-en>Please let us know whether you will be joining us.</p>
+      <p class="section-text" data-el>Παρακαλούμε ενημερώστε μας αν θα παρευρεθείτε.</p>
       <div class="form-card">
         <form id="rsvpForm">
-          <label>
-            Full Name
-            <input type="text" name="fullName" required placeholder="Your full name" />
-          </label>
-
+          <label><span data-en>Full Name</span><span data-el>Ονοματεπώνυμο</span><input type="text" name="fullName" required placeholder="Your full name" /></label>
           <div class="two-cols">
-            <label>
-              Will you attend?
+            <label><span data-en>Will you attend?</span><span data-el>Θα παρευρεθείτε;</span>
               <select name="attending" required>
-                <option value="">Please select</option>
-                <option value="Yes">Yes, I will attend</option>
-                <option value="No">Sorry, I cannot attend</option>
+                <option value="">Please select / Παρακαλώ επιλέξτε</option>
+                <option value="Yes">Yes / Ναι</option>
+                <option value="No">No / Όχι</option>
               </select>
             </label>
-
-            <label>
-              Number of Guests
-              <input type="number" name="guests" min="1" max="10" placeholder="1" />
-            </label>
+            <label><span data-en>Number of Guests</span><span data-el>Αριθμός Ατόμων</span><input type="number" name="guests" min="1" max="10" placeholder="1" /></label>
           </div>
-
-          <label>
-            Meal Preference
+          <label><span data-en>Meal Preference</span><span data-el>Προτίμηση Γεύματος</span>
             <select name="meal">
-              <option value="">No preference / Not sure yet</option>
+              <option value="">No preference / Καμία προτίμηση</option>
               <option value="Standard">Standard</option>
-              <option value="Vegetarian">Vegetarian</option>
+              <option value="Vegetarian">Vegetarian / Χορτοφαγικό</option>
               <option value="Vegan">Vegan</option>
-              <option value="Other">Other / Allergy</option>
+              <option value="Other">Other / Allergy / Άλλο / Αλλεργία</option>
             </select>
           </label>
-
-          <label>
-            Song Request
-            <input type="text" name="song" placeholder="A song you would love to hear" />
-          </label>
-
-          <label>
-            Message / Allergies / Notes
-            <textarea name="message" placeholder="Write anything we should know"></textarea>
-          </label>
-
+          <label><span data-en>Song Request</span><span data-el>Τραγούδι που θα θέλατε να ακούσετε</span><input type="text" name="song" placeholder="A song you would love to hear" /></label>
+          <label><span data-en>Message / Allergies / Notes</span><span data-el>Μήνυμα / Αλλεργίες / Σημειώσεις</span><textarea name="message" placeholder="Write anything we should know"></textarea></label>
           <button class="btn primary" type="submit">Submit RSVP</button>
         </form>
-
-        <div id="successMessage" class="success">
-          Thank you! Your RSVP has been submitted successfully.
-        </div>
-        <div id="errorMessage" class="error">
-          Something went wrong. Please try again or contact us directly.
-        </div>
+        <div id="successMessage" class="success" data-en>Thank you! Your RSVP has been submitted successfully.</div>
+        <div id="successMessageEl" class="success" data-el>Ευχαριστούμε! Η απάντησή σας καταχωρήθηκε επιτυχώς.</div>
+        <div id="errorMessage" class="error">Something went wrong. Please try again or contact us directly.</div>
       </div>
     </section>
   </main>
@@ -428,15 +578,50 @@
 
 <script>
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzKd9eI_ZkHMbu6jsK4OgCc4HlTesrbZbpX9RniAiXKW0pm-1s2sTvFpKXUWgLxmQEWjQ/exec';
+const WEDDING_DATE = new Date('2026-09-25T18:00:00+03:00');
+
+function setLanguage(lang) {
+  document.body.className = lang === 'el' ? 'lang-el' : 'lang-en';
+}
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = WEDDING_DATE - now;
+  const safeDiff = Math.max(diff, 0);
+
+  const days = Math.floor(safeDiff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((safeDiff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((safeDiff / (1000 * 60)) % 60);
+  const seconds = Math.floor((safeDiff / 1000) % 60);
+
+  document.getElementById('days').textContent = days;
+  document.getElementById('hours').textContent = hours;
+  document.getElementById('minutes').textContent = minutes;
+  document.getElementById('seconds').textContent = seconds;
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+let currentPhoto = 0;
+function changePhoto(direction) {
+  const photos = document.querySelectorAll('.carousel-frame img');
+  if (!photos.length) return;
+  photos[currentPhoto].classList.remove('active');
+  currentPhoto = (currentPhoto + direction + photos.length) % photos.length;
+  photos[currentPhoto].classList.add('active');
+}
 
 const form = document.getElementById('rsvpForm');
 const successMessage = document.getElementById('successMessage');
+const successMessageEl = document.getElementById('successMessageEl');
 const errorMessage = document.getElementById('errorMessage');
 
 form.addEventListener('submit', function(event) {
   event.preventDefault();
 
   successMessage.style.display = 'none';
+  successMessageEl.style.display = 'none';
   errorMessage.style.display = 'none';
 
   const submitButton = form.querySelector('button[type="submit"]');
@@ -465,15 +650,17 @@ form.addEventListener('submit', function(event) {
 
   document.body.appendChild(iframe);
   document.body.appendChild(hiddenForm);
-
   hiddenForm.submit();
 
   setTimeout(() => {
     form.reset();
-    successMessage.style.display = 'block';
+    if (document.body.classList.contains('lang-el')) {
+      successMessageEl.style.display = 'block';
+    } else {
+      successMessage.style.display = 'block';
+    }
     submitButton.disabled = false;
     submitButton.textContent = 'Submit RSVP';
-
     document.body.removeChild(hiddenForm);
     document.body.removeChild(iframe);
   }, 1500);
