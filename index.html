@@ -344,7 +344,7 @@
     }
 
     .success, .error {
-      display: none;
+      display: none !important;
       margin-top: 16px;
       padding: 14px 16px;
       border-radius: 14px;
@@ -620,9 +620,9 @@ const errorMessage = document.getElementById('errorMessage');
 form.addEventListener('submit', function(event) {
   event.preventDefault();
 
-  successMessage.style.display = 'none';
-  successMessageEl.style.display = 'none';
-  errorMessage.style.display = 'none';
+  successMessage.style.setProperty('display', 'none', 'important');
+  successMessageEl.style.setProperty('display', 'none', 'important');
+  errorMessage.style.setProperty('display', 'none', 'important');
 
   const submitButton = form.querySelector('button[type="submit"]');
   submitButton.disabled = true;
@@ -655,9 +655,9 @@ form.addEventListener('submit', function(event) {
   setTimeout(() => {
     form.reset();
     if (document.body.classList.contains('lang-el')) {
-      successMessageEl.style.display = 'block';
+      successMessageEl.style.setProperty('display', 'block', 'important');
     } else {
-      successMessage.style.display = 'block';
+      successMessage.style.setProperty('display', 'block', 'important');
     }
     submitButton.disabled = false;
     submitButton.textContent = 'Submit RSVP';
