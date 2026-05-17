@@ -112,10 +112,70 @@
       border: 1px solid var(--line);
       border-radius: 50%;
       opacity: 0.7;
+      pointer-events: none;
     }
 
     .invite-card::before { top: -100px; left: -95px; }
     .invite-card::after { bottom: -100px; right: -95px; }
+
+    .falling-blooms {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .bloom {
+      position: absolute;
+      width: var(--size);
+      height: var(--size);
+      opacity: var(--opacity);
+      transform: rotate(var(--rotate));
+    }
+
+    .bloom::before,
+    .bloom::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 55% 45% 60% 40%;
+      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.85), rgba(232, 189, 180, 0.88) 42%, rgba(174, 111, 113, 0.75) 100%);
+      box-shadow: 0 8px 18px rgba(47, 42, 37, 0.08);
+    }
+
+    .bloom::after {
+      transform: rotate(65deg) scale(0.82);
+      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.85), rgba(242, 210, 201, 0.88) 45%, rgba(190, 130, 126, 0.66) 100%);
+    }
+
+    .leaf {
+      position: absolute;
+      width: var(--size);
+      height: calc(var(--size) * 0.42);
+      border-radius: 100% 0 100% 0;
+      background: linear-gradient(135deg, rgba(138, 149, 103, 0.75), rgba(206, 216, 178, 0.55));
+      opacity: var(--opacity);
+      transform: rotate(var(--rotate));
+      box-shadow: 0 8px 18px rgba(47, 42, 37, 0.05);
+    }
+
+    .bloom-1 { --size: 78px; --opacity: .42; --rotate: -24deg; top: 28px; left: 44px; }
+    .bloom-2 { --size: 48px; --opacity: .34; --rotate: 18deg; top: 116px; left: 112px; }
+    .bloom-3 { --size: 60px; --opacity: .36; --rotate: 38deg; top: 40px; right: 78px; }
+    .bloom-4 { --size: 38px; --opacity: .30; --rotate: -12deg; top: 155px; right: 142px; }
+    .bloom-5 { --size: 70px; --opacity: .34; --rotate: 28deg; bottom: 55px; right: 72px; }
+    .bloom-6 { --size: 42px; --opacity: .28; --rotate: -30deg; bottom: 120px; left: 75px; }
+
+    .leaf-1 { --size: 72px; --opacity: .34; --rotate: -18deg; top: 90px; left: 32px; }
+    .leaf-2 { --size: 60px; --opacity: .28; --rotate: 35deg; top: 92px; right: 45px; }
+    .leaf-3 { --size: 66px; --opacity: .28; --rotate: -42deg; bottom: 82px; right: 46px; }
+    .leaf-4 { --size: 52px; --opacity: .24; --rotate: 28deg; bottom: 65px; left: 42px; }
+
+    .invite-card > *:not(.falling-blooms) {
+      position: relative;
+      z-index: 1;
+    }
 
     .eyebrow {
       color: var(--gold-dark);
@@ -434,6 +494,19 @@
     body.lang-en [data-el] { display: none; }
 
     @media (max-width: 760px) {
+      .invite-card {
+        width: 960px;
+        max-width: 960px;
+        transform: scale(calc((100vw - 32px) / 960));
+        transform-origin: top center;
+        margin-bottom: calc(-1 * (960px - 100vw) * 0.35);
+      }
+
+      .hero {
+        min-height: 760px;
+        overflow: hidden;
+      }
+
       .nav-inner {
         align-items: flex-start;
         flex-direction: column;
@@ -473,6 +546,18 @@
   <main>
     <section id="home" class="hero">
       <div class="invite-card">
+        <div class="falling-blooms" aria-hidden="true">
+          <span class="bloom bloom-1"></span>
+          <span class="bloom bloom-2"></span>
+          <span class="bloom bloom-3"></span>
+          <span class="bloom bloom-4"></span>
+          <span class="bloom bloom-5"></span>
+          <span class="bloom bloom-6"></span>
+          <span class="leaf leaf-1"></span>
+          <span class="leaf leaf-2"></span>
+          <span class="leaf leaf-3"></span>
+          <span class="leaf leaf-4"></span>
+        </div>
         <div class="eyebrow" data-en>Together with their families</div>
         <div class="eyebrow" data-el>Μαζί με τις οικογένειές τους</div>
         <h1 class="couple-names english-names" data-en>
