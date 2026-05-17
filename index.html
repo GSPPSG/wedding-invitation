@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Grigoris & Emily | Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #f8f4ed;
@@ -129,11 +132,34 @@
       font-weight: 400;
     }
 
+    .couple-names {
+      display: grid;
+      gap: 28px;
+      justify-items: center;
+      align-items: center;
+      line-height: 0.82;
+      font-size: clamp(76px, 12vw, 142px);
+      letter-spacing: 0;
+    }
+
+    .english-names,
+    .greek-names {
+      font-family: 'Parisienne', cursive;
+      font-weight: normal;
+      font-size: clamp(90px, 12vw, 150px);
+    }
+
+    .couple-names span:not(.ampersand) {
+      display: block;
+      color: #1f1b18;
+    }
+
     .ampersand {
       display: block;
       color: var(--gold);
-      font-size: 0.62em;
-      margin: 8px 0;
+      font-size: 0.45em;
+      margin: -25px 0 -15px;
+      line-height: 1;
     }
 
     .date {
@@ -370,6 +396,30 @@
       border-radius: 22px;
     }
 
+    .guest-names {
+      display: grid;
+      gap: 16px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(184, 155, 94, 0.05);
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 13px 14px;
+      background: white;
+      min-height: 48px;
+    }
+
+    .checkbox-label input {
+      width: auto;
+    }
+
     footer {
       text-align: center;
       padding: 42px 20px;
@@ -405,13 +455,12 @@
     }
   </style>
 </head>
-<body class="lang-en">
+<body class="lang-el">
   <nav>
     <div class="nav-inner">
       <div class="brand">G & E</div>
       <div class="links">
         <a href="#home" data-en>Invitation</a><a href="#home" data-el>Πρόσκληση</a>
-        <a href="#story" data-en>Our Story</a><a href="#story" data-el>Η Ιστορία μας</a>
         <a href="#photos" data-en>Photos</a><a href="#photos" data-el>Φωτογραφίες</a>
         <a href="#details" data-en>Details</a><a href="#details" data-el>Πληροφορίες</a>
         <a href="#rsvp">RSVP</a>
@@ -426,10 +475,15 @@
       <div class="invite-card">
         <div class="eyebrow" data-en>Together with their families</div>
         <div class="eyebrow" data-el>Μαζί με τις οικογένειές τους</div>
-        <h1>
-          Grigoris
+        <h1 class="couple-names english-names" data-en>
+          <span>Grigoris</span>
           <span class="ampersand">&</span>
-          Emily
+          <span>Emily</span>
+        </h1>
+        <h1 class="couple-names greek-names" data-el>
+          <span>Γρηγόρης</span>
+          <span class="ampersand">&</span>
+          <span>Έμιλυ</span>
         </h1>
         <div class="date">25 · 09 · 2026</div>
         <p class="subtitle" data-en>
@@ -456,34 +510,6 @@
         <div class="count-box"><strong id="hours">0</strong><span data-en>Hours</span><span data-el>Ώρες</span></div>
         <div class="count-box"><strong id="minutes">0</strong><span data-en>Minutes</span><span data-el>Λεπτά</span></div>
         <div class="count-box"><strong id="seconds">0</strong><span data-en>Seconds</span><span data-el>Δευτ.</span></div>
-      </div>
-    </section>
-
-    <section id="story">
-      <h2 class="section-title" data-en>Our Story</h2>
-      <h2 class="section-title" data-el>Η Ιστορία μας</h2>
-      <p class="section-text" data-en>
-        Elegant, warm and a little playful — this space was designed to feel like you: romantic without being too formal, refined without feeling distant, and full of the joy of the people who will celebrate with you.
-      </p>
-      <p class="section-text" data-el>
-        Κομψό, ζεστό και με λίγη παιχνιδιάρικη διάθεση — ένας χώρος που δημιουργήθηκε για να σας ταιριάζει: ρομαντικός χωρίς υπερβολές, elegant χωρίς απόσταση, και γεμάτος χαρά.
-      </p>
-      <div class="story-grid">
-        <div class="story-card">
-          <h3 data-en>The Feeling</h3><h3 data-el>Η Αίσθηση</h3>
-          <p data-en>Soft neutrals, warm gold and olive details create a timeless Greek elegance.</p>
-          <p data-el>Απαλοί ουδέτεροι τόνοι, ζεστό χρυσό και olive λεπτομέρειες δημιουργούν μια διαχρονική ελληνική κομψότητα.</p>
-        </div>
-        <div class="story-card">
-          <h3 data-en>The Celebration</h3><h3 data-el>Η Γιορτή</h3>
-          <p data-en>A day designed for family, friends, music, good wine and unforgettable moments.</p>
-          <p data-el>Μια ημέρα για οικογένεια, φίλους, μουσική, καλό κρασί και αξέχαστες στιγμές.</p>
-        </div>
-        <div class="story-card">
-          <h3 data-en>The Place</h3><h3 data-el>Το Μέρος</h3>
-          <p data-en>Ktima Ivelia brings the ceremony and reception together in one beautiful setting.</p>
-          <p data-el>Το Κτήμα Ιβέλια φιλοξενεί τόσο την τελετή όσο και τη δεξίωση σε έναν όμορφο χώρο.</p>
-        </div>
       </div>
     </section>
 
@@ -537,51 +563,131 @@
 
     <section id="rsvp">
       <h2 class="section-title">RSVP</h2>
-      <p class="section-text" data-en>Please let us know whether you will be joining us.</p>
-      <p class="section-text" data-el>Παρακαλούμε ενημερώστε μας αν θα παρευρεθείτε.</p>
+      <p class="section-text" data-en>Please let us know whether you will be joining us by July 31.</p>
+      <p class="section-text" data-el>Παρακαλούμε ενημερώστε μας αν θα παρευρεθείτε έως τις 31 Ιουλίου.</p>
       <div class="form-card">
         <form id="rsvpForm">
-          <label><span data-en>Full Name</span><span data-el>Ονοματεπώνυμο</span><input type="text" name="fullName" required placeholder="Your full name" /></label>
+          <label><span data-en>Full Name</span><span data-el>Ονοματεπώνυμο</span><input type="text" name="fullName" required data-placeholder-en="Your full name" data-placeholder-el="Το ονοματεπώνυμό σας" /></label>
           <div class="two-cols">
             <label><span data-en>Will you attend?</span><span data-el>Θα παρευρεθείτε;</span>
-              <select name="attending" required>
-                <option value="">Please select / Παρακαλώ επιλέξτε</option>
-                <option value="Yes">Yes / Ναι</option>
-                <option value="No">No / Όχι</option>
-              </select>
+              <select name="attending" id="attendingSelect" required></select>
             </label>
-            <label><span data-en>Number of Guests</span><span data-el>Αριθμός Ατόμων</span><input type="number" name="guests" min="1" max="10" placeholder="1" /></label>
+            <label><span data-en>Number of Adult Guests</span><span data-el>Αριθμός Ενηλίκων</span><select name="guests" id="guestCount">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  </select></label>
           </div>
-          <label><span data-en>Meal Preference</span><span data-el>Προτίμηση Γεύματος</span>
-            <select name="meal">
-              <option value="">No preference / Καμία προτίμηση</option>
-              <option value="Standard">Standard</option>
-              <option value="Vegetarian">Vegetarian / Χορτοφαγικό</option>
-              <option value="Vegan">Vegan</option>
-              <option value="Other">Other / Allergy / Άλλο / Αλλεργία</option>
-            </select>
-          </label>
-          <label><span data-en>Song Request</span><span data-el>Τραγούδι που θα θέλατε να ακούσετε</span><input type="text" name="song" placeholder="A song you would love to hear" /></label>
-          <label><span data-en>Message / Allergies / Notes</span><span data-el>Μήνυμα / Αλλεργίες / Σημειώσεις</span><textarea name="message" placeholder="Write anything we should know"></textarea></label>
-          <button class="btn primary" type="submit">Submit RSVP</button>
+          <div id="guestNames" class="guest-names"></div>
+
+          <div class="two-cols">
+            <label><span data-en>Number of Children</span><span data-el>Αριθμός Παιδιών</span><select name="children">
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                </select></label>
+            <label class="checkbox-label"><input type="checkbox" name="stroller" value="Yes" /> <span data-en>We will bring a stroller</span><span data-el>Θα έχουμε καρότσι</span></label>
+          </div>
+          <label><span data-en>Song Request</span><span data-el>Τραγούδι που θα θέλατε να ακούσετε</span><input type="text" name="song" data-placeholder-en="A song you would love to hear" data-placeholder-el="Ένα τραγούδι που θα θέλατε να ακούσετε" /></label>
+          <label><span data-en>Message / Allergies / Notes</span><span data-el>Μήνυμα / Αλλεργίες / Σημειώσεις</span><textarea name="message" data-placeholder-en="Write anything we should know" data-placeholder-el="Γράψτε οτιδήποτε θα θέλατε να γνωρίζουμε"></textarea></label>
+          <button class="btn primary" type="submit"><span data-en>Submit RSVP</span><span data-el>Υποβολή RSVP</span></button>
         </form>
         <div id="successMessage" class="success" data-en>Thank you! Your RSVP has been submitted successfully.</div>
         <div id="successMessageEl" class="success" data-el>Ευχαριστούμε! Η απάντησή σας καταχωρήθηκε επιτυχώς.</div>
         <div id="errorMessage" class="error">Something went wrong. Please try again or contact us directly.</div>
       </div>
     </section>
+
+    <section id="contact">
+      <h2 class="section-title" data-en>Contact</h2>
+      <h2 class="section-title" data-el>Επικοινωνία</h2>
+      <p class="section-text" data-en>For any questions regarding the wedding, please contact the bride.</p>
+      <p class="section-text" data-el>Για οποιαδήποτε ερώτηση σχετικά με τον γάμο, μπορείτε να επικοινωνήσετε με τη νύφη.</p>
+      <div class="form-card">
+        <h3 data-en>Bride</h3><h3 data-el>Νύφη</h3>
+        <p data-en><strong>Emily Kanakaraki</strong></p>
+        <p data-el><strong>Έμιλυ Κανακαράκη</strong></p>
+        <p data-en>Phone: <strong>ADD PHONE NUMBER HERE</strong></p>
+        <p data-el>Τηλέφωνο: <strong>ΠΡΟΣΘΕΣΤΕ ΤΗΛΕΦΩΝΟ ΕΔΩ</strong></p>
+        <p data-en>Email: <strong>ADD EMAIL ADDRESS HERE</strong></p>
+        <p data-el>Email: <strong>ΠΡΟΣΘΕΣΤΕ EMAIL ΕΔΩ</strong></p>
+      </div>
+    </section>
+
+    <section id="gift">
+      <h2 class="section-title" data-en>Gift Information</h2>
+      <h2 class="section-title" data-el>Πληροφορίες Δώρου</h2>
+      <p class="section-text" data-en>Your presence is the greatest gift. If you would still like to honour us with a gift, you may use the information below.</p>
+      <p class="section-text" data-el>Η παρουσία σας είναι το μεγαλύτερο δώρο. Αν παρ’ όλα αυτά επιθυμείτε να μας τιμήσετε με ένα δώρο, μπορείτε να χρησιμοποιήσετε τα παρακάτω στοιχεία.</p>
+      <div class="details-grid">
+        <div class="detail-card">
+          <h3 data-en>Bank Account 1</h3><h3 data-el>Τραπεζικός Λογαριασμός 1</h3>
+          <p data-en>Bank Name: ADD BANK NAME HERE<br />IBAN: ADD IBAN HERE</p>
+          <p data-el>Τράπεζα: ΠΡΟΣΘΕΣΤΕ ΤΡΑΠΕΖΑ ΕΔΩ<br />IBAN: ΠΡΟΣΘΕΣΤΕ IBAN ΕΔΩ</p>
+        </div>
+        <div class="detail-card">
+          <h3 data-en>Bank Account 2</h3><h3 data-el>Τραπεζικός Λογαριασμός 2</h3>
+          <p data-en>Bank Name: ADD BANK NAME HERE<br />IBAN: ADD IBAN HERE</p>
+          <p data-el>Τράπεζα: ΠΡΟΣΘΕΣΤΕ ΤΡΑΠΕΖΑ ΕΔΩ<br />IBAN: ΠΡΟΣΘΕΣΤΕ IBAN ΕΔΩ</p>
+        </div>
+        <div class="detail-card">
+          <h3>IRIS</h3>
+          <p data-en>Grigoris: ADD MOBILE NUMBER HERE<br />Emily: ADD MOBILE NUMBER HERE</p>
+          <p data-el>Γρηγόρης: ΠΡΟΣΘΕΣΤΕ ΚΙΝΗΤΟ ΕΔΩ<br />Έμιλυ: ΠΡΟΣΘΕΣΤΕ ΚΙΝΗΤΟ ΕΔΩ</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    With love, Grigoris & Emily · 25 September 2026
+    <span data-en>With love, Grigoris & Emily · 25 September 2026</span>
+    <span data-el>Με αγάπη, Γρηγόρης & Έμιλυ · 25 Σεπτεμβρίου 2026</span>
   </footer>
 
 <script>
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzKd9eI_ZkHMbu6jsK4OgCc4HlTesrbZbpX9RniAiXKW0pm-1s2sTvFpKXUWgLxmQEWjQ/exec';
 const WEDDING_DATE = new Date('2026-09-25T18:00:00+03:00');
 
+function updatePlaceholders(lang) {
+  document.querySelectorAll('[data-placeholder-en]').forEach((element) => {
+    element.placeholder = lang === 'el' ? element.dataset.placeholderEl : element.dataset.placeholderEn;
+  });
+}
+
+function updateAttendingOptions(lang) {
+  const select = document.getElementById('attendingSelect');
+  if (!select) return;
+
+  const currentValue = select.value;
+  const options = lang === 'el'
+    ? [
+        { value: '', text: 'Παρακαλώ επιλέξτε' },
+        { value: 'Yes', text: 'Ναι' },
+        { value: 'No', text: 'Όχι' }
+      ]
+    : [
+        { value: '', text: 'Please select' },
+        { value: 'Yes', text: 'Yes' },
+        { value: 'No', text: 'No' }
+      ];
+
+  select.innerHTML = '';
+  options.forEach((optionData) => {
+    const option = document.createElement('option');
+    option.value = optionData.value;
+    option.textContent = optionData.text;
+    select.appendChild(option);
+  });
+
+  if ([...select.options].some((option) => option.value === currentValue)) {
+    select.value = currentValue;
+  }
+}
+
 function setLanguage(lang) {
   document.body.className = lang === 'el' ? 'lang-el' : 'lang-en';
+  updatePlaceholders(lang);
+  updateAttendingOptions(lang);
+  updateSubmitButtonText();
 }
 
 function updateCountdown() {
@@ -612,6 +718,38 @@ function changePhoto(direction) {
   photos[currentPhoto].classList.add('active');
 }
 
+const guestCountInput = document.getElementById('guestCount');
+const guestNamesContainer = document.getElementById('guestNames');
+
+function renderGuestFields() {
+  if (!guestCountInput || !guestNamesContainer) return;
+  const count = Math.max(1, Math.min(2, Number(guestCountInput.value) || 1));
+  guestNamesContainer.innerHTML = '';
+
+  for (let i = 1; i <= count; i++) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'two-cols guest-row';
+    wrapper.innerHTML = `
+      <label><span data-en>Guest ${i} First Name</span><span data-el>Όνομα Επισκέπτη ${i}</span><input type="text" name="guest${i}FirstName" required /></label>
+      <label><span data-en>Guest ${i} Last Name</span><span data-el>Επώνυμο Επισκέπτη ${i}</span><input type="text" name="guest${i}LastName" required /></label>
+    `;
+    guestNamesContainer.appendChild(wrapper);
+  }
+}
+
+guestCountInput?.addEventListener('input', renderGuestFields);
+renderGuestFields();
+updatePlaceholders(document.body.classList.contains('lang-el') ? 'el' : 'en');
+updateAttendingOptions(document.body.classList.contains('lang-el') ? 'el' : 'en');
+
+function updateSubmitButtonText() {
+  const button = document.querySelector('#rsvpForm button[type="submit"]');
+  if (!button) return;
+  button.innerHTML = document.body.classList.contains('lang-el')
+    ? '<span data-el>Υποβολή RSVP</span>'
+    : '<span data-en>Submit RSVP</span>';
+}
+
 const form = document.getElementById('rsvpForm');
 const successMessage = document.getElementById('successMessage');
 const successMessageEl = document.getElementById('successMessageEl');
@@ -626,7 +764,7 @@ form.addEventListener('submit', function(event) {
 
   const submitButton = form.querySelector('button[type="submit"]');
   submitButton.disabled = true;
-  submitButton.textContent = 'Submitting...';
+  submitButton.textContent = document.body.classList.contains('lang-el') ? 'Υποβολή...' : 'Submitting...';
 
   const hiddenForm = document.createElement('form');
   hiddenForm.method = 'POST';
@@ -641,6 +779,15 @@ form.addEventListener('submit', function(event) {
     input.type = 'hidden';
     input.name = key;
     input.value = value;
+    hiddenForm.appendChild(input);
+  }
+
+  const strollerCheckbox = form.querySelector('input[name="stroller"]');
+  if (strollerCheckbox && !strollerCheckbox.checked) {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'stroller';
+    input.value = 'No';
     hiddenForm.appendChild(input);
   }
 
@@ -660,7 +807,7 @@ form.addEventListener('submit', function(event) {
       successMessage.style.setProperty('display', 'block', 'important');
     }
     submitButton.disabled = false;
-    submitButton.textContent = 'Submit RSVP';
+    updateSubmitButtonText();
     document.body.removeChild(hiddenForm);
     document.body.removeChild(iframe);
   }, 1500);
