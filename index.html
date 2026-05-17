@@ -6,8 +6,7 @@
   <title>Grigoris & Emily | Wedding Invitation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
-  <style>
+    <style>
     :root {
       --bg: #f8f4ed;
       --card: #fffdf8;
@@ -144,9 +143,9 @@
 
     .english-names,
     .greek-names {
-      font-family: 'Parisienne', cursive;
-      font-weight: normal;
-      font-size: clamp(90px, 12vw, 150px);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+      font-size: clamp(70px, 10vw, 110px);
     }
 
     .couple-names span:not(.ampersand) {
@@ -477,12 +476,12 @@
         <div class="eyebrow" data-el>Μαζί με τις οικογένειές τους</div>
         <h1 class="couple-names english-names" data-en>
           <span>Grigoris</span>
-          <span class="ampersand">&</span>
+          
           <span>Emily</span>
         </h1>
         <h1 class="couple-names greek-names" data-el>
           <span>Γρηγόρης</span>
-          <span class="ampersand">&</span>
+          
           <span>Έμιλυ</span>
         </h1>
         <div class="date">25 · 09 · 2026</div>
@@ -572,12 +571,24 @@
             <label><span data-en>Will you attend?</span><span data-el>Θα παρευρεθείτε;</span>
               <select name="attending" id="attendingSelect" required></select>
             </label>
-            <label><span data-en>Number of Adult Guests</span><span data-el>Αριθμός Ενηλίκων</span><select name="guests" id="guestCount">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  </select></label>
-          </div>
-          <div id="guestNames" class="guest-names"></div>
+            <label class="checkbox-label">
+<input type="checkbox" id="plusOneCheckbox" name="plusOne" value="Yes"/>
+<span data-en>Yes, I will bring a guest</span>
+<span data-el>Ναι, θα έχω συνοδό</span>
+</label>
+</div>
+
+<div id="plusOneDetails" class="guest-names" style="display:none;">
+<h3 data-en>Guest Details</h3>
+<h3 data-el>Στοιχεία Συνοδού</h3>
+<label>
+<span data-en>Guest Full Name</span>
+<span data-el>Ονοματεπώνυμο Συνοδού</span>
+<input type="text" name="plusOneFullName"
+data-placeholder-en="Guest full name"
+data-placeholder-el="Ονοματεπώνυμο συνοδού">
+</label>
+</div>
 
           <div class="two-cols">
             <label><span data-en>Number of Children</span><span data-el>Αριθμός Παιδιών</span><select name="children">
@@ -718,29 +729,20 @@ function changePhoto(direction) {
   photos[currentPhoto].classList.add('active');
 }
 
-const guestCountInput = document.getElementById('guestCount');
-const guestNamesContainer = document.getElementById('guestNames');
 
-function renderGuestFields() {
-  if (!guestCountInput || !guestNamesContainer) return;
-  const count = Math.max(1, Math.min(2, Number(guestCountInput.value) || 1));
-  guestNamesContainer.innerHTML = '';
+const plusOneCheckbox=document.getElementById('plusOneCheckbox');
+const plusOneDetails=document.getElementById('plusOneDetails');
 
-  for (let i = 1; i <= count; i++) {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'two-cols guest-row';
-    wrapper.innerHTML = `
-      <label><span data-en>Guest ${i} First Name</span><span data-el>Όνομα Επισκέπτη ${i}</span><input type="text" name="guest${i}FirstName" required /></label>
-      <label><span data-en>Guest ${i} Last Name</span><span data-el>Επώνυμο Επισκέπτη ${i}</span><input type="text" name="guest${i}LastName" required /></label>
-    `;
-    guestNamesContainer.appendChild(wrapper);
-  }
+function updatePlusOne(){
+ if(!plusOneCheckbox)return;
+ plusOneDetails.style.display=plusOneCheckbox.checked?'grid':'none';
 }
+plusOneCheckbox?.addEventListener('change',updatePlusOne);
+updatePlusOne();
 
-guestCountInput?.addEventListener('input', renderGuestFields);
-renderGuestFields();
 updatePlaceholders(document.body.classList.contains('lang-el') ? 'el' : 'en');
 updateAttendingOptions(document.body.classList.contains('lang-el') ? 'el' : 'en');
+
 
 function updateSubmitButtonText() {
   const button = document.querySelector('#rsvpForm button[type="submit"]');
