@@ -982,7 +982,7 @@
         const wrapper = document.createElement('div');
         wrapper.className = 'guest-row';
         wrapper.innerHTML = `
-          <label><span data-en>Plus One Full Name</span><span data-el>Ονοματεπώνυμο Συνοδού</span><input type="text" name="guest${i}FullName" required /></label>
+          <label><span data-en>Plus One Full Name</span><span data-el>Ονοματεπώνυμο Συνοδού</span><input type="text" name="plusOneFullName" required /></label>
         `;
         guestNamesContainer.appendChild(wrapper);
       }
@@ -1017,6 +1017,7 @@
       hiddenForm.style.display = 'none';
 
       const formData = new FormData(form);
+      const hasPlusOne = formData.get('guests') === '2';
 
       for (const [key, value] of formData.entries()) {
         const input = document.createElement('input');
@@ -1025,6 +1026,12 @@
         input.value = value;
         hiddenForm.appendChild(input);
       }
+
+      const plusOneInput = document.createElement('input');
+      plusOneInput.type = 'hidden';
+      plusOneInput.name = 'plusOne';
+      plusOneInput.value = hasPlusOne ? 'Yes' : 'No';
+      hiddenForm.appendChild(plusOneInput);
 
       const strollerCheckbox = form.querySelector('input[name="stroller"]');
       if (strollerCheckbox && !strollerCheckbox.checked) {
