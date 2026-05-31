@@ -1035,7 +1035,68 @@
     const successMessageEl = document.getElementById('successMessageEl');
     const errorMessage = document.getElementById('errorMessage');
 
-    form.addEventListener('submit', function(event) {
+    function appendHiddenInput(targetForm, name, value) {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = name;
+      input.value = value;
+      targetForm.appendChild(input);
+    }
+
+    function buildRsvpPayload() {
+      const formData = new FormData(form);
+      const hasPlusOne = formData.get('guests') === '2';
+      const strollerCheckbox = form.querySelector('input[name="stroller"]');
+
+      formData.set('plusOne', hasPlusOne ? 'Yes' : 'No');
+      if (!hasPlusOne) formData.set('plusOneFullName', '');
+      if (strollerCheckbox && !strollerCheckbox.checked) formData.set('stroller', 'No');
+
+      return formData;
+    }
+
+    function submitWithIframe(formData) {
+      return new Promise((resolve) => {
+        const frameName = `hidden_iframe_${Date.now()}`;
+        const hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = SCRIPT_URL;
+        hiddenForm.target = frameName;
+        hiddenForm.style.display = 'none';
+
+        for (const [key, value] of formData.entries()) {
+          appendHiddenInput(hiddenForm, key, value);
+        }
+
+        const iframe = document.createElement('iframe');
+        iframe.name = frameName;
+        iframe.style.display = 'none';
+
+        const cleanup = () => {
+          hiddenForm.remove();
+          iframe.remove();
+        };
+
+        const fallbackSuccess = setTimeout(() => {
+          resolve();
+        }, 10000);
+
+        const cleanupTimeout = setTimeout(cleanup, 30000);
+
+        iframe.addEventListener('load', () => {
+          clearTimeout(fallbackSuccess);
+          clearTimeout(cleanupTimeout);
+          setTimeout(cleanup, 1000);
+          resolve();
+        }, { once: true });
+
+        document.body.appendChild(iframe);
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+      });
+    }
+
+    form.addEventListener('submit', async function(event) {
       event.preventDefault();
 
       successMessage.style.setProperty('display', 'none', 'important');
@@ -1046,47 +1107,10 @@
       submitButton.disabled = true;
       submitButton.textContent = document.body.classList.contains('lang-el') ? 'Υποβολή...' : 'Submitting...';
 
-      const hiddenForm = document.createElement('form');
-      hiddenForm.method = 'POST';
-      hiddenForm.action = SCRIPT_URL;
-      hiddenForm.target = 'hidden_iframe';
-      hiddenForm.style.display = 'none';
+      try {
+        const formData = buildRsvpPayload();
+        await submitWithIframe(formData);
 
-      const formData = new FormData(form);
-      const hasPlusOne = formData.get('guests') === '2';
-
-      for (const [key, value] of formData.entries()) {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = value;
-        hiddenForm.appendChild(input);
-      }
-
-      const plusOneInput = document.createElement('input');
-      plusOneInput.type = 'hidden';
-      plusOneInput.name = 'plusOne';
-      plusOneInput.value = hasPlusOne ? 'Yes' : 'No';
-      hiddenForm.appendChild(plusOneInput);
-
-      const strollerCheckbox = form.querySelector('input[name="stroller"]');
-      if (strollerCheckbox && !strollerCheckbox.checked) {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = 'stroller';
-        input.value = 'No';
-        hiddenForm.appendChild(input);
-      }
-
-      const iframe = document.createElement('iframe');
-      iframe.name = 'hidden_iframe';
-      iframe.style.display = 'none';
-
-      document.body.appendChild(iframe);
-      document.body.appendChild(hiddenForm);
-      hiddenForm.submit();
-
-      setTimeout(() => {
         form.reset();
         renderGuestFields();
         if (document.body.classList.contains('lang-el')) {
@@ -1094,11 +1118,12 @@
         } else {
           successMessage.style.setProperty('display', 'block', 'important');
         }
+      } catch (error) {
+        errorMessage.style.setProperty('display', 'block', 'important');
+      } finally {
         submitButton.disabled = false;
         updateSubmitButtonText();
-        document.body.removeChild(hiddenForm);
-        document.body.removeChild(iframe);
-      }, 1500);
+      }
     });
   </script>
 </body>
