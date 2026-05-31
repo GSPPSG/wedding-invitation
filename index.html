@@ -6,9 +6,13 @@
   <title>Γρηγόρης & Έμιλυ | Wedding Invitation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif:wght@400;500;600&family=Noto+Serif+Display:ital,wght@0,400;0,500;1,400;1,500&family=Parisienne&display=swap" rel="stylesheet">
   <style>
     :root {
+      --font-serif: "Cormorant Garamond", "Noto Serif", Georgia, serif;
+      --font-greek: "Noto Serif", Georgia, serif;
+      --font-greek-display: "Noto Serif Display", "Noto Serif", Georgia, serif;
+      --font-script-en: "Parisienne", cursive;
       --paper: #fbf6ee;
       --paper-deep: #efe4d7;
       --panel: rgba(255, 250, 242, 0.92);
@@ -29,10 +33,12 @@
     body {
       margin: 0;
       color: var(--ink);
-      font-family: "Cormorant Garamond", Georgia, serif;
+      font-family: var(--font-serif);
       font-size: 19px;
+      font-variant-numeric: lining-nums;
+      font-feature-settings: "lnum" 1;
       background:
-        linear-gradient(rgba(251, 246, 238, 0.88), rgba(251, 246, 238, 0.95)),
+        linear-gradient(rgba(251, 246, 238, 0.76), rgba(251, 246, 238, 0.90)),
         url("assets/invitation/floral-top.png") center top / min(1000px, 126vw) auto no-repeat,
         url("assets/invitation/floral-bottom-clean.png") center bottom / min(1000px, 126vw) auto no-repeat,
         radial-gradient(circle at 12% 14%, rgba(185, 130, 84, 0.13), transparent 25%),
@@ -54,6 +60,13 @@
 
     a { color: var(--gold-dark); text-underline-offset: 0.2em; }
 
+    .numbers {
+      font-family: inherit;
+      font-variant-numeric: lining-nums;
+      font-feature-settings: "lnum" 1;
+      letter-spacing: 0.08em;
+    }
+
     .site-header {
       position: sticky;
       top: 0;
@@ -74,7 +87,7 @@
     }
 
     .brand {
-      font-family: "Parisienne", cursive;
+      font-family: var(--font-script-en);
       font-size: 31px;
       color: var(--gold-dark);
       white-space: nowrap;
@@ -95,7 +108,7 @@
       border-bottom: 1px solid transparent;
       color: var(--ink);
       background: transparent;
-      font-family: Arial, "Segoe UI", sans-serif;
+      font-family: var(--font-greek);
       font-size: 12px;
       font-weight: 500;
       line-height: 1.2;
@@ -125,7 +138,7 @@
       padding: clamp(34px, 6vw, 78px) clamp(28px, 6vw, 72px) clamp(190px, 22vw, 250px);
       text-align: center;
       background:
-        linear-gradient(rgba(255, 250, 242, 0.73), rgba(255, 250, 242, 0.92)),
+        linear-gradient(rgba(255, 250, 242, 0.46), rgba(255, 250, 242, 0.84)),
         url("assets/invitation/floral-small.png") center 43% / min(540px, 76%) auto no-repeat,
         url("assets/invitation/floral-bottom-clean.png") center bottom / 100% auto no-repeat,
         var(--panel);
@@ -199,7 +212,7 @@
       display: grid;
       justify-items: center;
       gap: 2px;
-      font-family: "Parisienne", cursive;
+      font-family: var(--font-script-en);
       font-size: clamp(74px, 15vw, 138px);
       font-weight: 400;
       line-height: 0.83;
@@ -207,7 +220,7 @@
     }
 
     .couple-names[data-el] {
-      font-family: "Segoe Script", "Comic Sans MS", "Brush Script MT", "Cormorant Garamond", cursive;
+      font-family: var(--font-greek-display);
       font-style: italic;
       font-size: clamp(68px, 13vw, 124px);
       line-height: 0.9;
@@ -216,7 +229,7 @@
     .couple-names .ampersand {
       margin: -2px 0 -8px;
       color: var(--gold);
-      font-family: "Cormorant Garamond", Georgia, serif;
+      font-family: var(--font-serif);
       font-size: 0.34em;
       line-height: 1;
     }
@@ -274,7 +287,7 @@
       border-radius: 0;
       background: rgba(255, 253, 247, 0.76);
       color: var(--ink);
-      font: 600 14px/1 "Cormorant Garamond", Georgia, serif;
+      font: 600 14px/1 var(--font-serif);
       letter-spacing: 0.16em;
       text-transform: uppercase;
       text-decoration: none;
@@ -305,7 +318,7 @@
     .section-title {
       margin: 0;
       color: var(--ink);
-      font-family: "Parisienne", cursive;
+      font-family: var(--font-script-en);
       font-size: clamp(48px, 7vw, 78px);
       font-weight: 400;
       line-height: 1;
@@ -412,7 +425,7 @@
       overflow: hidden;
       border-inline: 1px solid var(--line);
       background:
-        linear-gradient(rgba(255, 250, 242, 0.76), rgba(255, 250, 242, 0.82)),
+        linear-gradient(rgba(255, 250, 242, 0.52), rgba(255, 250, 242, 0.64)),
         url("assets/invitation/floral-top.png") center top / 100% auto no-repeat,
         var(--paper);
     }
@@ -434,7 +447,7 @@
       border: 0;
       background: rgba(255, 253, 247, 0.68);
       color: var(--gold-dark);
-      font: 400 34px/1 Georgia, serif;
+      font: 400 34px/1 var(--font-serif);
       cursor: pointer;
     }
 
@@ -477,7 +490,7 @@
       outline: 0;
       background: rgba(255, 255, 255, 0.72);
       color: var(--ink);
-      font: 19px/1.2 "Cormorant Garamond", Georgia, serif;
+      font: 19px/1.2 var(--font-serif);
     }
 
     input:focus,
@@ -556,6 +569,22 @@
     body.lang-el [data-en],
     body.lang-en [data-el] {
       display: none !important;
+    }
+
+    body.lang-el {
+      font-family: var(--font-greek);
+    }
+
+    body.lang-el .brand,
+    body.lang-el .couple-names[data-el],
+    body.lang-el .section-title {
+      font-family: var(--font-greek-display);
+      font-style: italic;
+    }
+
+    body.lang-el .section-title {
+      font-size: clamp(42px, 6vw, 68px);
+      line-height: 1.08;
     }
 
     body.lang-el .lang-btn[data-lang="el"],
@@ -758,6 +787,13 @@
           <img src="assets/photos/IMG_1072.jpeg" alt="Grigoris and Emily by the sea" />
           <img src="assets/photos/IMG_1170.jpeg" alt="Grigoris and Emily by the water" />
           <img src="assets/photos/IMG_1391.jpeg" alt="Grigoris and Emily in Lisbon" />
+          <img src="assets/photos/viber_image_2026-05-24_18-55-07-878.jpg" alt="Grigoris and Emily by the Aegean sea" />
+          <img src="assets/photos/viber_image_2026-05-24_18-55-07-863.jpg" alt="Grigoris and Emily smiling outdoors" />
+          <img src="assets/photos/viber_image_2026-05-24_18-55-05-862.jpg" alt="Grigoris and Emily before an evening out" />
+          <img src="assets/photos/viber_image_2026-05-24_18-55-06-722.jpg" alt="Grigoris and Emily at blue lakes" />
+          <img src="assets/photos/viber_image_2026-05-24_18-55-07-820.jpg" alt="Grigoris and Emily by turquoise water" />
+          <img src="assets/photos/viber_image_2026-05-24_18-55-08-255.jpg" alt="Grigoris and Emily in Sifnos" />
+          <img src="assets/photos/viber_image_2026-05-24_18-55-08-286.jpg" alt="Grigoris and Emily walking by the sea" />
         </div>
         <button class="carousel-btn" type="button" onclick="changePhoto(1)" aria-label="Next photo">›</button>
       </div>
@@ -794,8 +830,8 @@
       <p class="section-kicker" data-en>Kindly reply</p>
       <p class="section-kicker" data-el>Παρακαλούμε απαντήστε</p>
       <h2 class="section-title">RSVP</h2>
-      <p class="section-text" data-en>Please let us know whether you will be joining us by July 31.</p>
-      <p class="section-text" data-el>Παρακαλούμε ενημερώστε μας αν θα παρευρεθείτε έως τις 31 Ιουλίου.</p>
+      <p class="section-text" data-en>Please let us know whether you will be joining us by July 15.</p>
+      <p class="section-text" data-el>Παρακαλούμε ενημερώστε μας αν θα παρευρεθείτε έως τις 15 Ιουλίου.</p>
       <div class="form-card">
         <form id="rsvpForm">
           <label><span data-en>Full Name</span><span data-el>Ονοματεπώνυμο</span><input type="text" name="fullName" required data-placeholder-en="Your full name" data-placeholder-el="Το ονοματεπώνυμό σας" /></label>
@@ -861,8 +897,8 @@
         </div>
         <div class="detail-card">
           <h3 data-en>Bank Account 2</h3><h3 data-el>Τραπεζικός Λογαριασμός 2</h3>
-          <p data-en>Bank: Alpha Bank<br />IBAN: GR1601403890389002101002130<br />Beneficiary: Grigorios Spyropoulos</p>
-          <p data-el>Τράπεζα: Alpha Bank<br />IBAN: GR1601403890389002101002130<br />Δικαιούχος: Σπυρόπουλος Γρηγόριος</p>
+          <p data-en>Bank: Alpha Bank<br />IBAN: <span class="numbers">GR1901401430143002340014930</span><br />Beneficiary: Aimilia-Stefania Kanakaraki</p>
+          <p data-el>Τράπεζα: Alpha bank<br />IBAN: <span class="numbers">GR1901401430143002340014930</span><br />Δικαιούχος: Κανακαρακη Αιμιλια-Στεφανία</p>
         </div>
         <div class="detail-card">
           <h3>IRIS</h3>
